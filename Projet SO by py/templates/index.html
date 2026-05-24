@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SO - Grupo 4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Sistemas Operativos — Grupo #4</h1>
+    <p>Proyecto de sincronización y memoria</p>
+</header>
+
+<!-- MENÚ PRINCIPAL -->
+<div class="container" id="menu-principal">
+    <p class="menu-subtitulo">Selecciona una categoría para comenzar</p>
+    <div class="menu-grid">
+
+        <div class="menu-card" onclick="mostrarSeccion('seccion-sinc')">
+            <div class="menu-card-icon">⚡</div>
+            <h2>Sincronización y Concurrencia</h2>
+            <p>Lectores &amp; Escritores, Cinco Filósofos</p>
+            <span class="menu-card-badge disponible">Disponible</span>
+        </div>
+
+        <div class="menu-card deshabilitada">
+            <div class="menu-card-icon">🏦</div>
+            <h2>Administración de Memoria pt.1</h2>
+            <p>Algoritmo del Banquero, Reemplazo Óptimo</p>
+            <span class="menu-card-badge pendiente">Pendiente</span>
+        </div>
+
+        <div class="menu-card deshabilitada">
+            <div class="menu-card-icon">💾</div>
+            <h2>Memoria pt.2 + E/S</h2>
+            <p>Reemplazo NRU, Paginación FIFO, Disco</p>
+            <span class="menu-card-badge pendiente">Pendiente</span>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECCIÓN: SINCRONIZACIÓN -->
+<div class="container seccion-vista" id="seccion-sinc" style="display:none;">
+    <button class="btn-volver" onclick="volverMenu()">← Volver al menú</button>
+    <div class="seccion">
+        <h2>⚡ Sincronización y Concurrencia</h2>
+        <div class="btn-group">
+            <button class="btn" onclick="correr('lectores_escritores')">▶ Lectores y Escritores</button>
+            <button class="btn" onclick="correr('cinco_filosofos')">▶ Cinco Filósofos</button>
+            <button class="btn btn-secundario" onclick="limpiarTodo()">🗑 Limpiar</button>
+        </div>
+        <div class="output" id="out_lectores_escritores"></div>
+        <div class="output" id="out_cinco_filosofos"></div>
+    </div>
+</div>
+
+<script>
+function mostrarSeccion(id) {
+    document.getElementById('menu-principal').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+}
+
+function volverMenu() {
+    document.querySelectorAll('.seccion-vista').forEach(s => s.style.display = 'none');
+    document.getElementById('menu-principal').style.display = 'block';
+}
+
+function correr(algoritmo) {
+    const out = document.getElementById("out_" + algoritmo);
+    out.style.display = "block";
+    out.innerHTML = "⏳ Ejecutando...";
+
+    fetch("/" + algoritmo)
+        .then(r => r.json())
+        .then(eventos => {
+            out.innerHTML = eventos.map(e => {
+                if (e.includes("Lector")) return `<div class="lector">${e}</div>`;
+                if (e.includes("Escritor")) return `<div class="escritor">${e}</div>`;
+                if (e.includes("✔")) return `<div class="done">${e}</div>`;
+                return `<div>${e}</div>`;
+            }).join("");
+        });
+}
+
+function limpiar(algoritmo) {
+    const out = document.getElementById("out_" + algoritmo);
+    out.innerHTML = "";
+    out.style.display = "none";
+}
+
+function limpiarTodo() {
+    limpiar('lectores_escritores');
+    limpiar('cinco_filosofos');
+}
+</script>
+
+</body>
+</html>

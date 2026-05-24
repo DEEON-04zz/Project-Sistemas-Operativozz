@@ -1,17 +1,34 @@
-class Carepichas:
-    def __init__(self, nombre, edad, playada):
-        self.nombre = nombre
-        self.edad = edad
-        self.playada = playada
+# ══════════════════════════════════════════
+#   PROYECTO: Algoritmos de SO
+#   Grupo #4
+#   Gabriel → Sincronización y Concurrencia
+# ══════════════════════════════════════════
 
-    def descripcion(self):
-            print(f"Nombre: {self.nombre}, Edad: {self.edad}, Playada: {self.playada}")
+from sincronizacion.lectores_escritores import ejecutar as lectores_escritores
 
-            
-Amigos = Carepichas('GABRIEL','19','MERALOCA')
-Amigos1= Carepichas('DEIBY','19','LA MAS DIVA')
-Amigos2 = Carepichas('KENNEH','21','UN PAPIS')
+def menu():
+    while True:
+        print("\n╔══════════════════════════════════════════╗")
+        print("║       SISTEMAS OPERATIVOS - GRUPO 4      ║")
+        print("╠══════════════════════════════════════════╣")
+        print("║  GABRIEL - Sincronización                ║")
+        print("║    1. Lectores y Escritores              ║")
+        print("║    2. Cena de los Cinco Filósofos        ║")
+        print("╠══════════════════════════════════════════╣")
+        print("║    0. Salir                              ║")
+        print("╚══════════════════════════════════════════╝")
 
-Amigos.descripcion()
-Amigos1.descripcion()
-Amigos2.descripcion()
+        opcion = input("\nElige una opción: ")
+
+        if opcion == "1":
+            lectores_escritores()
+        elif opcion == "2":
+            print("\n⏳ Cinco Filósofos - Próximamente...")
+        elif opcion == "0":
+            print("\n👋 Saliendo...\n")
+            break
+        else:
+            print("\n❌ Opción inválida.")
+
+if __name__ == "__main__":
+    menu()
