@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify
-from sincronizacion.lectores_escritores import ejecutar as run_lectores
-from sincronizacion.cinco_filosofos import ejecutar as run_filosofos
+from Gabriel.sincronizacion.lectores_escritores import ejecutar as run_lectores
+from Gabriel.sincronizacion.cinco_filosofos import ejecutar as run_filosofos
 
 app = Flask(__name__)
 
