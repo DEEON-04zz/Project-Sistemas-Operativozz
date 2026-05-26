@@ -45,16 +45,16 @@ def escritor(id_escritor):
 
     eventos.append(f"[Escritor {id_escritor}] Terminó de escribir.")
 
-def ejecutar():
+def ejecutar(num_lectores=4, num_escritores=2):
     global lectores_activos, recurso, eventos
     lectores_activos = 0
     recurso = "dato_inicial"
     eventos = []
 
     hilos = []
-    for i in range(1, 5):
+    for i in range(1, num_lectores + 1):
         hilos.append(threading.Thread(target=lector, args=(i,)))
-    for i in range(1, 3):
+    for i in range(1, num_escritores + 1):
         hilos.append(threading.Thread(target=escritor, args=(i,)))
 
     random.shuffle(hilos)

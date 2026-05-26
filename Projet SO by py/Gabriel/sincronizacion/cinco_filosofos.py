@@ -10,14 +10,11 @@ import random
 #   Se evita el deadlock con un semáforo.
 # ══════════════════════════════════════════
 
-NUM_FILOSOFOS = 5
-tenedores = [threading.Semaphore(1) for _ in range(NUM_FILOSOFOS)]
-mesa = threading.Semaphore(4)  # máximo 4 filósofos a la vez para evitar deadlock
 eventos = []
 
-def filosofo(id):
+def filosofo(id, num_filosofos, tenedores, mesa):
     izquierda = id
-    derecha = (id + 1) % NUM_FILOSOFOS
+    derecha = (id + 1) % num_filosofos
 
     eventos.append(f"[Filósofo {id}] Está pensando...")
     time.sleep(random.uniform(0.01, 0.05))
@@ -39,13 +36,16 @@ def filosofo(id):
 
     eventos.append(f"[Filósofo {id}] Terminó de comer, vuelve a pensar.")
 
-def ejecutar():
+def ejecutar(num_filosofos=5):
     global eventos
     eventos = []
+    
+    tenedores = [threading.Semaphore(1) for _ in range(num_filosofos)]
+    mesa = threading.Semaphore(max(1, num_filosofos - 1))  # máximo n-1 filósofos a la vez para evitar deadlock
 
     hilos = []
-    for i in range(NUM_FILOSOFOS):
-        hilos.append(threading.Thread(target=filosofo, args=(i,)))
+    for i in range(num_filosofos):
+        hilos.append(threading.Thread(target=filosofo, args=(i, num_filosofos, tenedores, mesa)))
 
     for h in hilos:
         h.start()
