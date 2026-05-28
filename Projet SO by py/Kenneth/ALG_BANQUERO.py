@@ -59,10 +59,10 @@ def ejecutar():
 
     print("\n--- Resultado ---")
     if all(terminado):
-        print(f"  ✅ Estado SEGURO")
+        print(f"  (CORRECTO) Estado SEGURO")
         print(f"  Secuencia segura: {' → '.join(['P'+str(i) for i in secuencia])}")
     else:
-        print(f"  ❌ Estado INSEGURO — riesgo de deadlock")
+        print(f"  (INCORRECTO) Estado INSEGURO — riesgo de deadlock")
         pendientes = [f"P{i}" for i in range(n) if not terminado[i]]
         print(f"  Procesos bloqueados: {', '.join(pendientes)}")
 
