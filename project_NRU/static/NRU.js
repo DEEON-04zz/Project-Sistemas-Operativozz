@@ -38,10 +38,10 @@ function showMenu() {
   state = { mode: 'menu', step: 0, data: {} };
   empty();
   line(`<span class="b">╔═════════════════════════════════════════════╗</span>`);
-  line(`<span class="b">║</span>  <span class="g">ALGORITMO NRU — GRUPO #4</span>               <span class="b">║</span>`);
-  line(`<span class="b">║</span>  <span class="d">No Recently Used — Reemplazo de Páginas</span>   <span class="b">║</span>`);
-  line(`<span class="b">║</span>  <span class="d">Deibi · Kenneth · Gabriel — UNA Chorotega</span><span class="b">║</span>`);
-  line(`<span class="b">╚═════════════════════════════════════════════╝</span>`);
+  line(`<span class="b"></span>  <span class="g">ALGORITMO NRU — GRUPO #4</span>               <span class="b"></span>`);
+  line(`<span class="b"></span>  <span class="d">No Recently Used — Reemplazo de Páginas</span><span class="b"></span>`);
+  line(`<span class="b"></span><span class="b"></span>`);
+  line(`<span class="b">╚════════════════════════════════════════════╝</span>`);
   empty();
   line(`  <span class="g">[1]</span>  Ejecutar NRU`);
   line(`  <span class="g">[2]</span>  Ejemplo automático`);
