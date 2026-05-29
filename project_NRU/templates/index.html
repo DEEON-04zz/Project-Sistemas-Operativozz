@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>NRU — Grupo #4</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="dots">
+    <div class="dot dot1"></div>
+    <div class="dot dot2"></div>
+    <div class="dot dot3"></div>
+  </div>
+  <div class="title">NRU — Algoritmo de Reemplazo de Páginas — Grupo #4</div>
+  <div class="tag">UNA Chorotega</div>
+</div>
+
+<div class="main">
+
+  <div class="sidebar">
+    <div class="sidebar-title">Clases NRU</div>
+    <div class="clase-card">
+      <div class="ctitle" style="color:var(--c0)">Clase 0</div>
+      <div class="cdesc">R=0, M=0<br>No referenciada<br>No modificada<br><b style="color:var(--c0)">Primera en salir</b></div>
+    </div>
+    <div class="clase-card">
+      <div class="ctitle" style="color:var(--c1)">Clase 1</div>
+      <div class="cdesc">R=0, M=1<br>No referenciada<br>Sí modificada</div>
+    </div>
+    <div class="clase-card">
+      <div class="ctitle" style="color:var(--c2)">Clase 2</div>
+      <div class="cdesc">R=1, M=0<br>Sí referenciada<br>No modificada</div>
+    </div>
+    <div class="clase-card">
+      <div class="ctitle" style="color:var(--c3)">Clase 3</div>
+      <div class="cdesc">R=1, M=1<br>Sí referenciada<br>Sí modificada<br><b style="color:var(--c3)">Última en salir</b></div>
+    </div>
+    <div class="sidebar-title" style="margin-top:8px">Bits</div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--blue)"></div>R = Referenciada
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--orange)"></div>M = Modificada
+    </div>
+    <div id="stats"></div>
+  </div>
+
+  <div class="output-wrap">
+    <div class="output" id="out"></div>
+    <div class="mem-visual">
+      <div class="mem-label">RAM</div>
+      <div id="mem-boxes" style="display:flex;gap:6px"></div>
+      <div style="flex:1"></div>
+      <div id="paso-badge" style="font-size:11px;color:var(--dim)"></div>
+    </div>
+    <div class="input-row">
+      <span class="prompt">nru@grupo4:~$</span>
+      <input id="inp" autofocus placeholder="escribí aquí y presioná Enter..." autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/NRU.js"></script>
+</body>
+</html>
