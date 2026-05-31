@@ -103,7 +103,7 @@ async function ejecutarNRU(marcos, referencias, reset_cada) {
         setTimeout(() => {
           empty();
           line(`<span class="d">${'─'.repeat(50)}</span>`);
-          line(`<span class="g">✅ Simulación completada — resultado de Python</span>`);
+          line(`<span class="g">Simulación completada — resultado de Python</span>`);
           line(`  Fallos   : <span class="r">${resultado.fallos}</span> de ${resultado.pasos.filter(x => x.tipo !== 'reset').length}`);
           line(`  Aciertos : <span class="g">${resultado.aciertos}</span>`);
           line(`  Tasa     : <span class="y">${resultado.tasa}%</span>`);

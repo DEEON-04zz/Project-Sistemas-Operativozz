@@ -4,19 +4,19 @@
 
 /* ── VARIABLES — ACÁ PONÉS TUS COLORES ── */
 :root {
-  --bg: #010107;   /* fondo general */
-  --bg2:   #010918    ;   /* fondo sidebar e input */
-  --bg3:   #003057d8    ;   /* fondo tarjetas */
-  --border:    ;   /* color de bordes */
-  --text:      #00f314;   /* texto principal */
-  --dim:    #ffffff   ;   /* texto secundario */
-  --acento:    ;   /* color principal de acento */
-  --c0:      #ffff  ;   /* color clase 0 */
-  --c1:        ;   /* color clase 1 */
+  --bg:  #010107;   
+  --bg2: #010918;   
+  --bg3: #003057d8;  
+  --border:  #002652d8;   /* color de bordes */
+  --text:#a1f553;   
+  --dim: #ffffff;  
+  --acento:   #a1f553 ;   /* color principal de acento */
+  --c0:  #ff5050;   
+  --c1:#ffff;   /* color clase 1 */
   --c2:        ;   /* color clase 2 */
   --c3:        ;   /* color clase 3 */
   --radio: 8px    ;   /* redondez de esquinas ej: 8px */
-  --fuente: 'JetBrains Mono', monospace;
+  --fuente: 'JetBrains Mono', monospace, ns-serif monospace;
 }
 
 /* ── BODY ── */
@@ -95,7 +95,7 @@ body {
   border-left: 3px solid;
 }
 
-.clase-card.c0 { border-color: var(--c0); }
+.clase-card.c0 { border-color: var(--acento); }
 .clase-card.c1 { border-color: var(--c1); }
 .clase-card.c2 { border-color: var(--c2); }
 .clase-card.c3 { border-color: var(--c3); }
@@ -132,10 +132,13 @@ body {
   padding: 20px;
   font-size: 12px;
   line-height: 1.9;
+    text-shadow: 0 0 8px currentColor;
+
 }
 
 .output::-webkit-scrollbar { width: 3px; }
-.output::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+.output::-webkit-scrollbar-track { background: #fd5454ee; }
+.output::-webkit-scrollbar-thumb { background: #010920; border-radius: 99px; }
 
 /* ── CAJAS DE MEMORIA RAM ── */
 .mem-visual {
@@ -235,3 +238,13 @@ input::placeholder { color: var(--dim); }
 .b-c1  { border: 1px solid var(--c1);    color: var(--c1);    padding: 1px 8px; border-radius: var(--radio); font-size: 11px; }
 .b-c2  { border: 1px solid var(--c2);    color: var(--c2);    padding: 1px 8px; border-radius: var(--radio); font-size: 11px; }
 .b-c3  { border: 1px solid var(--c3);    color: var(--c3);    padding: 1px 8px; border-radius: var(--radio); font-size: 11px; }
+
+.clase-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.clase-card:hover {
+  transform: translateX(8px);
+  box-shadow: -3px 0 0 0 var(--acento);
+}
